@@ -1,0 +1,9 @@
+requests
+Flask
+requests-toolbelt
+websocket-client
+Pillow
+Flask-SQLAlchemy
+Flask-Login
+Flask-Bcrypt
+Flask-Migrate
