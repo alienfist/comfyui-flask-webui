@@ -8,6 +8,9 @@ An ai image generate website using flask base on comfyui
 ## Introduce
 An offline image generation website, converts Comfyui workflow into website functionality, making it easier to use.
 
+<p style="color:red;">Tips:</p>
+This project was written for a friend. The code needs to be stripped of some settings, and it is expected to upload all the code within 30 days.
+
 **Website Features：**
 
 1. **Stickers** Generate stickers from a photo
