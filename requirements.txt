@@ -7,3 +7,4 @@ Flask-SQLAlchemy
 Flask-Login
 Flask-Bcrypt
 Flask-Migrate
+cairosvg

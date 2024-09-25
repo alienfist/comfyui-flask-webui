@@ -8,8 +8,9 @@ An ai image generate website using flask base on comfyui
 ## Introduce
 An offline image generation website, converts Comfyui workflow into website functionality, making it easier to use.
 
-<p style="color:red;">Tips:</p>
-This project was written for a friend. The code needs to be stripped of some settings, and it is expected to upload all the code within 30 days.
+**Tips:**  
+
+This project was written for my friend. The code needs to be stripped of some settings, and it is expected to upload all the code within 30 days.
 
 **Website Features：**
 
@@ -41,4 +42,39 @@ This project was written for a friend. The code needs to be stripped of some set
 <p align="center">
     <img src="assets/screenshot-idphoto.jpg" alt="idphoto" width="80%">
 </p>
+
+## ComfyUI Setup
+
+To start your comfyui, make sure the comfyui workflow can be used normally.  
+You can find more information at the following link:  
+https://github.com/comfyanonymous/ComfyUI
+
+## How to install
+
+1. **create venv**
+```bash
+conda create -n comfyui-flask-webui python=3.10
+conda activate comfyui-flask-webui
+cd comfyui-flask-webui
+pip install -r requirements.txt
+```
+
+2. **sql init**
+```bash
+flask db init
+flask db migrate
+flask db upgrade
+```
+
+3. **create user** (modify config.py userinfo)
+```bash
+python test/create_user.py
+```
+
+4. **run project**
+```bash
+python manage.py
+```
+
+
 
