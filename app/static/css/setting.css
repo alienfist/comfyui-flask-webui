@@ -1,0 +1,53 @@
+/* setting.css */
+.work-area {
+    width: 100%;
+    height: 100vh;
+}
+
+.work-center {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #222222;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 88px 0;
+}
+
+.uk-card {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 16%;
+    height: 18%;
+    margin: 1%;
+    box-shadow: 0 0 20px rgba(40, 40, 40, 0.2);
+    border: 1px solid #333;
+}
+
+.uk-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 16px rgba(255, 239, 166, 0.3);
+    background-image: linear-gradient(45deg, #ffcc00, #ff00cc, #00ccff);
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.uk-card-title {
+    color: #F9F8EB;
+    font-size: 18px;
+}

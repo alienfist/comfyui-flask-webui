@@ -3,5 +3,8 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.8 (deep-memory-project)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (deep-memory-project)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (ai-pathfind-project)" project-jdk-type="Python SDK" />
+  <component name="PyCharmProfessionalAdvertiser">
+    <option name="shown" value="true" />
+  </component>
 </project>

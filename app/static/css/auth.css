@@ -1,0 +1,83 @@
+/* auth.css */
+.work-area {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #222222;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.work-center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #444;
+    color: #fff;
+    font-size: 20px;
+    padding: 100px;
+    overflow: auto;
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.intro img {
+    width: 30%;
+    border-radius: 8px;
+    margin-right: 50px;
+}
+
+.intro .text {
+    width: 70%;
+    align-items: center;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #999;
+    margin: 20px 0;
+}
+
+.qrcode {
+    display: flex;
+    justify-content: center;
+  }
+
+  .qrcode img {
+    width: 16%;
+    height: auto;
+    margin-right: 88px;
+    border-radius: 2px;
+  }
+
+.trade {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 38px;
+  }
+
+.trade-logo {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.trade-phone {
+    font-weight: bold;
+    font-size: 30px;
+    color: #DAA520;
+    margin-top: 10px;
+    margin-background:10px;
+}
+
+.trade-phone p {
+    color: white;
+    font-size: 36px;
+    line-height: 40px
+}

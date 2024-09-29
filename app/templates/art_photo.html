@@ -1,0 +1,98 @@
+<!-- art_photo.html -->
+{% extends "base.html" %}
+
+{% block title %}Art Photo{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/art_photo.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/art_photo.js') }}"></script>
+{% endblock %}
+
+{% block float %}{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center" id="placeholderContainer"></div>
+    <div class="work-sidebar">
+        <form>
+            <div uk-accordion="collapsible: true">
+                <div class="gen-btn-area">
+                    <button class="uk-button uk-button-primary uk-margin-top" type="button" id="generate" onclick="generateImage()">
+                        <img src="{{ url_for('static', filename='image/icon/leaf_white.png') }}">
+                        Generate
+                    </button>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="uk-accordion-content">
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="imagePreview">Upload face image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="imageInput" onchange="previewImage(this)">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImage" uk-icon="icon: trash" type="button" onclick="clearImagePreview()"></button>
+                            </div>
+                            <div id="imagePreviewContainer" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreview" src="#" alt="preview image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Gender:</label>
+                        <div class="uk-form-controls uk-form-controls-text my-radio">
+                            <label><input class="uk-radio" type="radio" value="female" name="gender_radio" checked> Female</label>
+                            <label><input class="uk-radio" type="radio" value="male" name="gender_radio"> Male</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                      <label class="uk-form-label" for="positivePrompt">Prompt:</label>
+                      <div class="uk-form-controls">
+                        <textarea class="uk-textarea" id="positivePrompt" rows="3" placeholder="Prompt"></textarea>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Image scale:</label>
+                        <div class="slider-label">
+                            <img class="slider-img" src="{{ url_for('static', filename='image/icon/horizontal_screen.png') }}">
+                            <label id="imageScale">1:1</label>
+                            <img class="slider-img" src="{{ url_for('static', filename='image/icon/vertical_screen.png') }}">
+                        </div>
+                        <div class="uk-form-controls image-scale-part">
+                            <div class="image-scale-slider">
+                                <input class="uk-range" id="imageScaleSlider" type="range" value="4" min="1" max="7" step="1" oninput="updateImageScale(this.value)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <div class="slider-label">
+                            <label class="uk-form-label" for="imageCountSlider">Image count:</label>
+                            <label id="imageCount">4</label>
+                        </div>
+                        <div class="uk-form-controls image-count-part">
+                            <div class="image-count-slider">
+                                <input class="uk-range" id="imageCountSlider" type="range" value="4" min="1" max="6" step="1" oninput="updateImageCount(this.value)">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

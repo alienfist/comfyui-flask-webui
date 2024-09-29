@@ -1,0 +1,24 @@
+<!-- about.html -->
+{% extends "base.html" %}
+
+{% block title %}about us{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block float %}
+{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center">
+        <div class="intro">
+            <div class="trade-phone">Concat Us：<p>alienfist@gmail.com</p></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

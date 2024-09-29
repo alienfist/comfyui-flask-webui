@@ -1,0 +1,113 @@
+<!-- stickers.html -->
+{% extends "base.html" %}
+
+{% block title %}Generate Stickers{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/stickers.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/stickers.js') }}"></script>
+{% endblock %}
+
+{% block float %}{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center" id="placeholderContainer"></div>
+    <div class="work-sidebar">
+        <div class="gen-btn-area">
+            <button class="uk-button uk-button-primary uk-margin-top" type="button" id="generate" onclick="generateSticker()">
+                <img src="{{ url_for('static', filename='image/icon/leaf_white.png') }}">
+                Generate
+            </button>
+            <div class="divider"></div>
+        </div>
+
+        <form>
+            <div uk-accordion="collapsible: true">
+                <div class="uk-accordion-content">
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Image background:</label>
+                        <div class="uk-form-controls uk-form-controls-text my-radio">
+                            <label><input class="uk-radio" type="radio" value="1 girl" name="gender_radio" checked> Female</label>
+                            <label><input class="uk-radio" type="radio" value="1 boy" name="gender_radio"> Male</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="age">Age:</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="age">
+                                <option value="Child">儿童</option>
+                                <option value="Youth" selected>青年</option>
+                                <option value="Middle-aged">中年</option>
+                                <option value="Elderly">老年</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                      <label class="uk-form-label" for="descPrompt">Person desc:</label>
+                      <div class="uk-form-controls">
+                        <textarea class="uk-textarea" id="descPrompt" rows="3" placeholder="person describe"></textarea>
+                      </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="imagePreview">Upload face image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="imageInput" onchange="previewImage(this)">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImage" uk-icon="icon: trash" type="button" onclick="clearImagePreview()"></button>
+                            </div>
+                            <div id="imagePreviewContainer" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreview" src="#" alt="preview image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="style">Choose style:</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="style"></select>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <div class="slider-label">
+                            <label class="uk-form-label" for="imageCountSlider">Image count:</label>
+                            <label id="imageCount">4</label>
+                        </div>
+                        <div class="uk-form-controls image-count-part">
+                            <div class="image-count-slider">
+                                <input class="uk-range" id="imageCountSlider" type="range" value="4" min="1" max="6" step="1" oninput="updateImageCount(this.value)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Image background:</label>
+                        <div class="uk-form-controls uk-form-controls-text my-radio">
+                            <label><input class="uk-radio" type="radio" value="true" name="removebg_radio" checked> Remove</label>
+                            <label><input class="uk-radio" type="radio" value="false" name="removebg_radio"> Keep</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

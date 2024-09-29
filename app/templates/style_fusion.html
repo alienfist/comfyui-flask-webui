@@ -1,0 +1,69 @@
+<!-- style_fusion.html -->
+{% extends "base.html" %}
+
+{% block title %}Photo style fusion{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_fusion.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/style_fusion.js') }}"></script>
+{% endblock %}
+
+{% block float %}{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center" id="placeholderContainer"></div>
+    <div class="work-sidebar">
+        <form>
+            <div uk-accordion="collapsible: true">
+                <div class="gen-btn-area">
+                    <button class="uk-button uk-button-primary uk-margin-top" type="button" id="generate" onclick="generateImage()">
+                        <img src="{{ url_for('static', filename='image/icon/leaf_white.png') }}">
+                        Generate
+                    </button>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="uk-accordion-content">
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="sourceImageInput">Upload source image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="sourceImageInput" onchange="previewImage(this, 'Source')">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImageSource" uk-icon="icon: trash" type="button" onclick="clearImagePreview('Source')"></button>
+                            </div>
+                            <div id="imagePreviewContainerSource" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreviewSource" src="#" alt="preview source image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="styleImageInput">Upload style image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="styleImageInput" onchange="previewImage(this, 'Style')">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImageStyle" uk-icon="icon: trash" type="button" onclick="clearImagePreview('Style')"></button>
+                            </div>
+                            <div id="imagePreviewContainerStyle" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreviewStyle" src="#" alt="preview source image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

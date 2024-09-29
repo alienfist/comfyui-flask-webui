@@ -1,0 +1,399 @@
+{
+  "1": {
+    "inputs": {
+      "instantid_file": "ip-adapter.bin"
+    },
+    "class_type": "InstantIDModelLoader",
+    "_meta": {
+      "title": "Load InstantID Model"
+    }
+  },
+  "2": {
+    "inputs": {
+      "provider": "CUDA"
+    },
+    "class_type": "InstantIDFaceAnalysis",
+    "_meta": {
+      "title": "InstantID Face Analysis"
+    }
+  },
+  "4": {
+    "inputs": {
+      "weight": 1,
+      "start_at": 0,
+      "end_at": 1,
+      "instantid": [
+        "1",
+        0
+      ],
+      "insightface": [
+        "2",
+        0
+      ],
+      "control_net": [
+        "16",
+        0
+      ],
+      "image": [
+        "47",
+        0
+      ],
+      "model": [
+        "64",
+        0
+      ],
+      "positive": [
+        "20",
+        0
+      ],
+      "negative": [
+        "21",
+        0
+      ],
+      "image_kps": [
+        "43",
+        5
+      ]
+    },
+    "class_type": "ApplyInstantID",
+    "_meta": {
+      "title": "Apply InstantID"
+    }
+  },
+  "10": {
+    "inputs": {
+      "seed": 378971921426134,
+      "steps": 8,
+      "cfg": 2,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "4",
+        1
+      ],
+      "negative": [
+        "4",
+        2
+      ],
+      "latent_image": [
+        "15",
+        0
+      ],
+      "optional_vae": [
+        "14",
+        2
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "rmbgmodel": [
+        "12",
+        0
+      ],
+      "image": [
+        "10",
+        5
+      ]
+    },
+    "class_type": "BRIA_RMBG_Zho",
+    "_meta": {
+      "title": "🧹BRIA RMBG"
+    }
+  },
+  "12": {
+    "inputs": {},
+    "class_type": "BRIA_RMBG_ModelLoader_Zho",
+    "_meta": {
+      "title": "🧹BRIA_RMBG Model Loader"
+    }
+  },
+  "13": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "ckpt_name": "dreamshaperXL_lightningDPMSDE.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "15": {
+    "inputs": {
+      "width": 1016,
+      "height": 1016,
+      "batch_size": 6
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "16": {
+    "inputs": {
+      "control_net_name": "diffusion_pytorch_model.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "17": {
+    "inputs": {
+      "lora_name": "cutedoodle_XL-000012.safetensors",
+      "strength_model": 1,
+      "strength_clip": 0.8,
+      "model": [
+        "14",
+        0
+      ],
+      "clip": [
+        "14",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "18": {
+    "inputs": {
+      "image": "",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "20": {
+    "inputs": {
+      "text": [
+        "29",
+        0
+      ],
+      "clip": [
+        "64",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "text": [
+        "27",
+        0
+      ],
+      "clip": [
+        "64",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "27": {
+    "inputs": {
+      "text": "shiny, photo, photography, soft, nsfw, nude, ugly, broken, watermark, oversaturated"
+    },
+    "class_type": "Text _O",
+    "_meta": {
+      "title": "Text _O"
+    }
+  },
+  "29": {
+    "inputs": {
+      "delimiter": "",
+      "clean_whitespace": "false",
+      "text_a": [
+        "31",
+        0
+      ],
+      "text_b": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": ", Sticker, svg, vector art, sharp, kawaii style, Anime style"
+    },
+    "class_type": "Text _O",
+    "_meta": {
+      "title": "Text _O"
+    }
+  },
+  "31": {
+    "inputs": {
+      "text": "half body, looking at viewer, [1 girl]"
+    },
+    "class_type": "Text _O",
+    "_meta": {
+      "title": "Text _O"
+    }
+  },
+  "43": {
+    "inputs": {
+      "seed": 378971921426134,
+      "steps": 8,
+      "cfg": 2.3000000000000003,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "14",
+        0
+      ],
+      "positive": [
+        "63",
+        0
+      ],
+      "negative": [
+        "45",
+        0
+      ],
+      "latent_image": [
+        "46",
+        0
+      ],
+      "optional_vae": [
+        "14",
+        2
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "45": {
+    "inputs": {
+      "text": [
+        "27",
+        0
+      ],
+      "clip": [
+        "14",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "46": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 6
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "47": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "63": {
+    "inputs": {
+      "text": "\"0\" :\"laughing\",\n\"1\" :\"smiling\",\n\"2\" :\"singing\",\n\"3\" :\"dancing\",\n\"4\" :\"kawaii\",\n\"5\" :\"running\",\n",
+      "max_frames": 6,
+      "print_output": false,
+      "pre_text": [
+        "31",
+        0
+      ],
+      "start_frame": 0,
+      "end_frame": 0,
+      "clip": [
+        "14",
+        1
+      ]
+    },
+    "class_type": "BatchPromptSchedule",
+    "_meta": {
+      "title": "Batch Prompt Schedule 📅🅕🅝"
+    }
+  },
+  "64": {
+    "inputs": {
+      "lora_name": "StickersRedmond.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "17",
+        0
+      ],
+      "clip": [
+        "17",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "65": {
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "FixWhite",
+    "_meta": {
+      "title": "Fix White"
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "46",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "28": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "40": {
+    "inputs": {
+      "switch": "Off",
+      "lora_name": "None",
+      "strength_model": 0.9,
+      "strength_clip": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CR Load LoRA",
+    "_meta": {
+      "title": "CR Load LoRA"
+    }
+  },
+  "41": {
+    "inputs": {
+      "switch": "Off",
+      "lora_name": "None",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "47",
+        0
+      ],
+      "clip": [
+        "47",
+        1
+      ]
+    },
+    "class_type": "CR Load LoRA",
+    "_meta": {
+      "title": "CR Load LoRA"
+    }
+  },
+  "42": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "scale_by": 1.5,
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "ImageScaleBy",
+    "_meta": {
+      "title": "Upscale Image By"
+    }
+  },
+  "43": {
+    "inputs": {
+      "text_positive": "",
+      "text_negative": "",
+      "style": "base",
+      "log_prompt": false,
+      "style_positive": false,
+      "style_negative": false
+    },
+    "class_type": "SDXLPromptStyler",
+    "_meta": {
+      "title": "SDXL Prompt Styler"
+    }
+  },
+  "44": {
+    "inputs": {
+      "text": [
+        "43",
+        0
+      ],
+      "clip": [
+        "41",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "45": {
+    "inputs": {
+      "text": [
+        "43",
+        1
+      ],
+      "clip": [
+        "41",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "46": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": 740088641695907,
+      "steps": 30,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "41",
+        0
+      ],
+      "positive": [
+        "44",
+        0
+      ],
+      "negative": [
+        "45",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "47": {
+    "inputs": {
+      "switch": "Off",
+      "lora_name": "None",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "40",
+        0
+      ],
+      "clip": [
+        "40",
+        1
+      ]
+    },
+    "class_type": "CR Load LoRA",
+    "_meta": {
+      "title": "CR Load LoRA"
+    }
+  },
+  "48": {
+    "inputs": {},
+    "class_type": "BRIA_RMBG_ModelLoader_Zho",
+    "_meta": {
+      "title": "🧹BRIA_RMBG Model Loader"
+    }
+  },
+  "49": {
+    "inputs": {
+      "rmbgmodel": [
+        "48",
+        0
+      ],
+      "image": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "BRIA_RMBG_Zho",
+    "_meta": {
+      "title": "🧹BRIA RMBG"
+    }
+  },
+  "50": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "49",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<!-- auth.html -->
+{% extends "base.html" %}
+
+{% block title %}登录注册{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block float %}
+{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo title">Logo</div>
+            <ul>
+                <li><a href="#login" class="active">登录</a></li>
+                <li><a href="#register">注册</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div id="login" class="form-container">
+                <h2>登录</h2>
+                <form action="{{ url_for('login') }}" method="post">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">登录</button>
+                </form>
+            </div>
+            <div id="register" class="form-container">
+                <h2>注册</h2>
+                <form action="{{ url_for('register') }}" method="post">
+                    <label for="new-username">用户名</label>
+                    <input type="text" id="new-username" name="username" required>
+                    <label for="new-password">密码</label>
+                    <input type="password" id="new-password" name="password" required>
+                    <label for="confirm-password">确认密码</label>
+                    <input type="password" id="confirm-password" name="confirm_password" required>
+                    <button type="submit">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

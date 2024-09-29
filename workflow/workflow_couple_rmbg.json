@@ -1,0 +1,598 @@
+{
+  "13": {
+    "inputs": {
+      "image": "ba_male_short (6).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Person1"
+    }
+  },
+  "14": {
+    "inputs": {
+      "ckpt_name": "juggernautXL_v9Rdphoto2Lightning.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "21": {
+    "inputs": {
+      "image": "nn_female_long (5).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Person2"
+    }
+  },
+  "22": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "81",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "81",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "25": {
+    "inputs": {
+      "seed": [
+        "80",
+        0
+      ],
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "65",
+        0
+      ],
+      "positive": [
+        "86",
+        0
+      ],
+      "negative": [
+        "86",
+        1
+      ],
+      "latent_image": [
+        "26",
+        0
+      ],
+      "optional_vae": [
+        "14",
+        2
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "26": {
+    "inputs": {
+      "width": 1024,
+      "height": 768,
+      "batch_size": 4
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "58": {
+    "inputs": {
+      "weight": 0.8,
+      "projection": "ortho_v2",
+      "fidelity": 8,
+      "noise": 0,
+      "start_at": 0,
+      "end_at": 1,
+      "model": [
+        "81",
+        0
+      ],
+      "pulid": [
+        "59",
+        0
+      ],
+      "eva_clip": [
+        "60",
+        0
+      ],
+      "face_analysis": [
+        "61",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ],
+      "attn_mask": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "ApplyPulidAdvanced",
+    "_meta": {
+      "title": "Apply PuLID Advanced"
+    }
+  },
+  "59": {
+    "inputs": {
+      "pulid_file": "ip-adapter_pulid_sdxl_fp16.safetensors"
+    },
+    "class_type": "PulidModelLoader",
+    "_meta": {
+      "title": "Load PuLID Model"
+    }
+  },
+  "60": {
+    "inputs": {},
+    "class_type": "PulidEvaClipLoader",
+    "_meta": {
+      "title": "Load Eva Clip (PuLID)"
+    }
+  },
+  "61": {
+    "inputs": {
+      "provider": "CUDA"
+    },
+    "class_type": "PulidInsightFaceLoader",
+    "_meta": {
+      "title": "Load InsightFace (PuLID)"
+    }
+  },
+  "62": {
+    "inputs": {
+      "weight": 0.8,
+      "projection": "ortho_v2",
+      "fidelity": 8,
+      "noise": 0,
+      "start_at": 0,
+      "end_at": 1,
+      "model": [
+        "58",
+        0
+      ],
+      "pulid": [
+        "59",
+        0
+      ],
+      "eva_clip": [
+        "60",
+        0
+      ],
+      "face_analysis": [
+        "61",
+        0
+      ],
+      "image": [
+        "21",
+        0
+      ],
+      "attn_mask": [
+        "73",
+        0
+      ]
+    },
+    "class_type": "ApplyPulidAdvanced",
+    "_meta": {
+      "title": "Apply PuLID Advanced"
+    }
+  },
+  "63": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus-face_sdxl_vit-h.safetensors"
+    },
+    "class_type": "IPAdapterModelLoader",
+    "_meta": {
+      "title": "IPAdapter Model Loader"
+    }
+  },
+  "64": {
+    "inputs": {
+      "clip_name": "model.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "65": {
+    "inputs": {
+      "weight": 1,
+      "weight_type": "linear",
+      "combine_embeds": "concat",
+      "start_at": 0.11,
+      "end_at": 0.8,
+      "embeds_scaling": "V only",
+      "model": [
+        "66",
+        0
+      ],
+      "ipadapter": [
+        "63",
+        0
+      ],
+      "image": [
+        "21",
+        0
+      ],
+      "attn_mask": [
+        "73",
+        0
+      ],
+      "clip_vision": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "IPAdapterAdvanced",
+    "_meta": {
+      "title": "IPAdapter Advanced"
+    }
+  },
+  "66": {
+    "inputs": {
+      "weight": 1,
+      "weight_type": "linear",
+      "combine_embeds": "concat",
+      "start_at": 0.11,
+      "end_at": 0.8,
+      "embeds_scaling": "V only",
+      "model": [
+        "81",
+        0
+      ],
+      "ipadapter": [
+        "63",
+        0
+      ],
+      "image": [
+        "13",
+        0
+      ],
+      "attn_mask": [
+        "70",
+        0
+      ],
+      "clip_vision": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "IPAdapterAdvanced",
+    "_meta": {
+      "title": "IPAdapter Advanced"
+    }
+  },
+  "69": {
+    "inputs": {
+      "value": 1,
+      "width": 490,
+      "height": 512
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "70": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "operation": "add",
+      "destination": [
+        "71",
+        0
+      ],
+      "source": [
+        "74",
+        0
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "71": {
+    "inputs": {
+      "value": 0,
+      "width": 768,
+      "height": 512
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "72": {
+    "inputs": {
+      "value": 1,
+      "width": 500,
+      "height": 512
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "73": {
+    "inputs": {
+      "x": 270,
+      "y": 0,
+      "operation": "add",
+      "destination": [
+        "71",
+        0
+      ],
+      "source": [
+        "75",
+        0
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "74": {
+    "inputs": {
+      "left": 0,
+      "top": 0,
+      "right": 250,
+      "bottom": 0,
+      "mask": [
+        "69",
+        0
+      ]
+    },
+    "class_type": "FeatherMask",
+    "_meta": {
+      "title": "FeatherMask"
+    }
+  },
+  "75": {
+    "inputs": {
+      "left": 250,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "mask": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "FeatherMask",
+    "_meta": {
+      "title": "FeatherMask"
+    }
+  },
+  "77": {
+    "inputs": {
+      "seed": [
+        "80",
+        0
+      ],
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.6,
+      "preview_method": "auto",
+      "vae_decode": "true",
+      "model": [
+        "62",
+        0
+      ],
+      "positive": [
+        "25",
+        1
+      ],
+      "negative": [
+        "25",
+        2
+      ],
+      "latent_image": [
+        "78",
+        0
+      ],
+      "optional_vae": [
+        "25",
+        4
+      ]
+    },
+    "class_type": "KSampler (Efficient)",
+    "_meta": {
+      "title": "KSampler (Efficient)"
+    }
+  },
+  "78": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.5,
+      "samples": [
+        "25",
+        3
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "Upscale Latent By"
+    }
+  },
+  "80": {
+    "inputs": {
+      "min": 1,
+      "max": 99999999999999
+    },
+    "class_type": "RandomInt",
+    "_meta": {
+      "title": "Random Int"
+    }
+  },
+  "81": {
+    "inputs": {
+      "lora_name": "Harrlogos_v2.0.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "89",
+        0
+      ],
+      "clip": [
+        "89",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "84": {
+    "inputs": {
+      "image": "article-5cac49edda2fa (5).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "85": {
+    "inputs": {
+      "detect_hand": "enable",
+      "detect_body": "enable",
+      "detect_face": "enable",
+      "resolution": 1024,
+      "bbox_detector": "yolox_l.onnx",
+      "pose_estimator": "dw-ll_ucoco_384_bs5.torchscript.pt",
+      "image": [
+        "84",
+        0
+      ]
+    },
+    "class_type": "DWPreprocessor",
+    "_meta": {
+      "title": "DWPose Estimator"
+    }
+  },
+  "86": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 0.35000000000000003,
+      "positive": [
+        "23",
+        0
+      ],
+      "negative": [
+        "22",
+        0
+      ],
+      "control_net": [
+        "87",
+        0
+      ],
+      "image": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet (Advanced)"
+    }
+  },
+  "87": {
+    "inputs": {
+      "control_net_name": "thibaud_xl_openpose.safetensors"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "89": {
+    "inputs": {
+      "lora_name": "SDXLFaeTastic2400.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "14",
+        0
+      ],
+      "clip": [
+        "14",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "94": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "95",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "95": {
+    "inputs": {
+      "rmbgmodel": [
+        "96",
+        0
+      ],
+      "image": [
+        "77",
+        5
+      ]
+    },
+    "class_type": "BRIA_RMBG_Zho",
+    "_meta": {
+      "title": "🧹BRIA RMBG"
+    }
+  },
+  "96": {
+    "inputs": {},
+    "class_type": "BRIA_RMBG_ModelLoader_Zho",
+    "_meta": {
+      "title": "🧹BRIA_RMBG Model Loader"
+    }
+  }
+}

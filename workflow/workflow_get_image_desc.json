@@ -1,0 +1,43 @@
+{
+  "1": {
+    "inputs": {
+      "image": "00004-3192127754 (1).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "2": {
+    "inputs": {
+      "model": "wd-v1-4-moat-tagger-v2",
+      "threshold": 0.35,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "tags": "solo, looking_at_viewer, simple_background, shirt, long_sleeves, 1boy, sitting, white_shirt, white_hair, male_focus, collared_shirt, glasses, pants, sweater, facial_hair, blue_background, veins, mustache, realistic, brown_pants, old, blue_sweater, old_man, wrinkled_skin",
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "WD14 Tagger 🐍"
+    }
+  },
+  "11": {
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  }
+}

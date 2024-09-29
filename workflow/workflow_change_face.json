@@ -1,0 +1,237 @@
+{
+  "424": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "624",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "425": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "624",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "498": {
+    "inputs": {
+      "image": "ComfyUI_00337_ (4).png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "582": {
+    "inputs": {
+      "image": "018ece5b5031a5a8012036be04036e.jpg@800w_1l_2o_100sh (5).jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "624": {
+    "inputs": {
+      "ckpt_name": "majicmixRealistic_v7.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "696": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "codeformer-v0.1.0.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "detect_gender_input": "female",
+      "detect_gender_source": "female",
+      "input_faces_index": "0",
+      "source_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": [
+        "498",
+        0
+      ],
+      "source_image": [
+        "582",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "730": {
+    "inputs": {
+      "model_name": "segm/face_yolov8m-seg_60.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "736": {
+    "inputs": {
+      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "761": {
+    "inputs": {
+      "weight": 1,
+      "weight_faceidv2": 0.5,
+      "weight_type": "linear",
+      "combine_embeds": "concat",
+      "start_at": 0,
+      "end_at": 1,
+      "embeds_scaling": "V only",
+      "model": [
+        "762",
+        0
+      ],
+      "ipadapter": [
+        "762",
+        1
+      ],
+      "image": [
+        "582",
+        0
+      ]
+    },
+    "class_type": "IPAdapterFaceID",
+    "_meta": {
+      "title": "IPAdapter FaceID"
+    }
+  },
+  "762": {
+    "inputs": {
+      "preset": "FACEID PLUS V2",
+      "lora_strength": 0.6,
+      "provider": "CUDA",
+      "model": [
+        "624",
+        0
+      ]
+    },
+    "class_type": "IPAdapterUnifiedLoaderFaceID",
+    "_meta": {
+      "title": "IPAdapter Unified Loader FaceID"
+    }
+  },
+  "763": {
+    "inputs": {
+      "guide_size": 384,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": 80038217854709,
+      "steps": 25,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 0.5,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7000000000000001,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "image": [
+        "696",
+        0
+      ],
+      "model": [
+        "761",
+        0
+      ],
+      "clip": [
+        "624",
+        1
+      ],
+      "vae": [
+        "736",
+        0
+      ],
+      "positive": [
+        "424",
+        0
+      ],
+      "negative": [
+        "425",
+        0
+      ],
+      "bbox_detector": [
+        "730",
+        0
+      ],
+      "sam_model_opt": [
+        "764",
+        0
+      ],
+      "segm_detector_opt": [
+        "730",
+        1
+      ]
+    },
+    "class_type": "FaceDetailer",
+    "_meta": {
+      "title": "FaceDetailer"
+    }
+  },
+  "764": {
+    "inputs": {
+      "model_name": "sam_vit_b_01ec64.pth",
+      "device_mode": "AUTO"
+    },
+    "class_type": "SAMLoader",
+    "_meta": {
+      "title": "SAMLoader (Impact)"
+    }
+  },
+  "772": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "763",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

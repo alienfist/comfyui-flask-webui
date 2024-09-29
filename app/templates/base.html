@@ -1,0 +1,89 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}DeepMemory{% endblock %}</title>
+
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+
+        <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/constants.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+
+        {% block extra_css %}{% endblock %}
+    </head>
+
+    <body>
+        <!-- Loading -->
+        <div id="loadingOverlay" class="load-overlay" style="display: none;">
+            <div id="loadingText" class="load-text"></div>
+            <progress id="progress-bar" class="uk-progress" value="0" max="100"></progress>
+            <button id="cancelButton" class="cancel-button" onclick="interruptTask()">
+                <div uk-icon="icon: close"></div><br>cancel
+            </button>
+        </div>
+
+        <!-- Zoom in pic -->
+        <div id="zoomOverlay" class="zoom-overlay" style="display: none;">
+            <img src="">
+        </div>
+
+        {% block float %}{% endblock %}
+
+        <div class="header">
+            <img src="{{ url_for('static', filename='image/logo/ai_pathfind_white.png') }}" alt="ai_pathfind_logo" class="logo">
+            <button class="login">Login</button>
+        </div>
+
+        <div class="container">
+            <div class="sidebar">
+                <ul class="uk-nav uk-nav-default">
+                    <li><a href="/" class="{% if active_page == 'index' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/home.png') }}" alt="Home">
+                        <p>Home</p></a>
+                    </li>
+                    <li><a href="/txt2img" class="{% if active_page == 'txt2img' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/txt2img.png') }}" alt="txt2img">
+                        <p>Txt2img</p></a></li>
+                    <li><a href="/img2img" class="{% if active_page == 'img2img' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/img2img.png') }}" alt="img2img">
+                        <p>Img2img</p></a></li>
+                    <li><a href="/stickers" class="{% if active_page == 'stickers' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/avatar.png') }}" alt="avatar">
+                        <p>StickersPhoto</p></a>
+                    </li>
+                    <li><a href="/style_fusion" class="{% if active_page == 'style_fusion' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/style_fusion.png') }}" alt="style_fusion">
+                        <p>FusionPhoto</p></a></li>
+                    <li><a href="/art_photo" class="{% if active_page == 'art_photo' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/art_photo.png') }}" alt="art_photo">
+                        <p>ArtPhoto</p></a></li>
+                    <li><a href="/change_face" class="{% if active_page == 'change_face' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/face.png') }}" alt="face">
+                        <p>ChangeFace</p></a></li>
+                    <li><a href="/id_photo" class="{% if active_page == 'id_photo' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/id_photo.png') }}" alt="id_photo">
+                        <p>IDPhoto</p></a></li>
+                    <li><a href="/couple" class="{% if active_page == 'couple' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/couple.png') }}" alt="couple">
+                        <p>CouplePhoto</p></a></li>
+                    <li><a href="/setting" class="{% if active_page == 'setting' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/setting.png') }}" alt="setting">
+                        <p>Settings</p></a></li>
+                    <li><a href="/about" class="{% if active_page == 'about' %}active{% endif %}">
+                        <img src="{{ url_for('static', filename='image/icon/about.png') }}" alt="about">
+                        <p>AboutUs</p></a></li>
+                </ul>
+            </div>
+            <div class="main">
+                {% block work_area %}{% endblock %}
+            </div>
+        </div>
+
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

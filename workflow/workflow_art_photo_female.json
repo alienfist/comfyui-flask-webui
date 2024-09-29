@@ -1,0 +1,240 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "xxmix9realisticsdxl_v10.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "2": {
+    "inputs": {
+      "text": [
+        "28",
+        0
+      ],
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "add_noise": true,
+      "noise_seed": [
+        "23",
+        0
+      ],
+      "cfg": 1.8,
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "27",
+        0
+      ],
+      "sampler": [
+        "5",
+        0
+      ],
+      "sigmas": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "SamplerCustom",
+    "_meta": {
+      "title": "SamplerCustom"
+    }
+  },
+  "5": {
+    "inputs": {
+      "sampler_name": "dpmpp_2m_sde"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "6": {
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 4
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "7": {
+    "inputs": {
+      "steps": 10,
+      "denoise": 1,
+      "model": [
+        "29",
+        0
+      ]
+    },
+    "class_type": "SDTurboScheduler",
+    "_meta": {
+      "title": "SDTurboScheduler"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "4",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "17": {
+    "inputs": {
+      "image": "",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "22": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0",
+      "source_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": [
+        "8",
+        0
+      ],
+      "source_image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "23": {
+    "inputs": {
+      "min": 0,
+      "max": 10000000000000
+    },
+    "class_type": "RandomInt",
+    "_meta": {
+      "title": "Random Int"
+    }
+  },
+  "24": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "26": {
+    "inputs": {
+      "model": "wd-v1-4-moat-tagger-v2",
+      "threshold": 0.65,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "tags": "1girl, solo, long_hair, looking_at_viewer, smile, shirt, black_hair, white_shirt, black_eyes, v, realistic",
+      "image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "WD14 Tagger 🐍"
+    }
+  },
+  "27": {
+    "inputs": {
+      "text": "nsfw, nude, watermark, text, ugly, Bad anatomy, Bad hands,",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "28": {
+    "inputs": {
+      "text1": [
+        "26",
+        0
+      ],
+      "text2": "<lora:ClearHand-V2:-2>,",
+      "separator": ","
+    },
+    "class_type": "Concat Text _O",
+    "_meta": {
+      "title": "Concat Text _O"
+    }
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "ClearHand-V2.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  }
+}

@@ -8,10 +8,6 @@ An ai image generate website using flask base on comfyui
 ## Introduce
 An offline image generation website, converts Comfyui workflow into website functionality, making it easier to use.
 
-**Tips:**  
-
-This project was written for my friend. The code needs to be stripped of some settings, and it is expected to upload all the code within 30 days.
-
 **Website Features：**
 
 1. **Stickers** Generate stickers from a photo
@@ -45,9 +41,10 @@ This project was written for my friend. The code needs to be stripped of some se
 
 ## ComfyUI Setup
 
-To start your comfyui, make sure the comfyui workflow can be used normally.  
+To start your comfyui, make sure the comfyui workflow can be used normally, default port 8188.  
 You can find more information at the following link:  
-https://github.com/comfyanonymous/ComfyUI
+https://github.com/comfyanonymous/ComfyUI  
+The checkpoints and lora that Comfyui needs to use are still being organized and will be provided together in the future
 
 ## How to install
 
@@ -66,7 +63,12 @@ flask db migrate
 flask db upgrade
 ```
 
-3. **create user** (modify config.py userinfo)
+3. **create user**  
+
+rename config_template.py to config.py  
+如果需要提示词支持中文，需要输入自己的百度翻译appid和key  
+https://api.fanyi.baidu.com/
+
 ```bash
 python test/create_user.py
 ```
@@ -76,5 +78,6 @@ python test/create_user.py
 python manage.py
 ```
 
+## Concat
 
-
+alienfist@gmail.com

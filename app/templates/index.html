@@ -1,0 +1,31 @@
+<!-- index.html -->
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
+
+{% block float %}
+<div id="image-modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+    <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+    <a class="next" onclick="changeImage(1)">&#10095;</a>
+</div>
+{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center">
+        <div id="gallery"></div>
+        <div id="loading" style="display: none;">picture loading...</div>
+        <div id="no-more-data" style="display: none;">no more picture</div>
+    </div>
+</div>
+{% endblock %}

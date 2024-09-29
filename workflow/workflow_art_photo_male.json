@@ -1,0 +1,240 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "xxmix9realisticsdxl_v10.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "2": {
+    "inputs": {
+      "text": [
+        "33",
+        0
+      ],
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "width": 768,
+      "height": 1024,
+      "batch_size": 4
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "30",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "17": {
+    "inputs": {
+      "image": "hjl_male_short.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "22": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "GFPGANv1.4.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 0.5,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0",
+      "source_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": [
+        "8",
+        0
+      ],
+      "source_image": [
+        "17",
+        0
+      ],
+      "face_model": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "23": {
+    "inputs": {
+      "min": 0,
+      "max": 99999999999999
+    },
+    "class_type": "RandomInt",
+    "_meta": {
+      "title": "Random Int"
+    }
+  },
+  "24": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "26": {
+    "inputs": {
+      "model": "wd-v1-4-moat-tagger-v2",
+      "threshold": 0.5,
+      "character_threshold": 0.85,
+      "replace_underscore": false,
+      "trailing_comma": false,
+      "exclude_tags": "",
+      "tags": "solo, looking_at_viewer, short_hair, shirt, black_hair, 1boy, white_shirt, upper_body, male_focus, indoors, black_eyes, realistic, asian, photorealistic",
+      "image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "WD14Tagger|pysssss",
+    "_meta": {
+      "title": "WD14 Tagger 🐍"
+    }
+  },
+  "27": {
+    "inputs": {
+      "text": "nsfw, nude, watermark, text, ugly, Bad anatomy, Bad hands,",
+      "clip": [
+        "29",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "29": {
+    "inputs": {
+      "lora_name": "Lora-Custom-ModelLiXian.safetensors",
+      "strength_model": 0.8,
+      "strength_clip": 1,
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "30": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": [
+        "23",
+        0
+      ],
+      "steps": 25,
+      "cfg": 7.5,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "start_at_step": 0,
+      "end_at_step": 10000,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "29",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "27",
+        0
+      ],
+      "latent_image": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)"
+    }
+  },
+  "33": {
+    "inputs": {
+      "text1": [
+        "26",
+        0
+      ],
+      "text2": [
+        "50",
+        0
+      ],
+      "separator": ","
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "38": {
+    "inputs": {
+      "face_model": "morgan.safetensors"
+    },
+    "class_type": "ReActorLoadFaceModel",
+    "_meta": {
+      "title": "Load Face Model 🌌 ReActor"
+    }
+  },
+  "50": {
+    "inputs": {
+      "prompt": "looking at viewer, best quality, masterpiece, ultra highres, photorealistic, realistic, half body,"
+    },
+    "class_type": "CR Prompt Text",
+    "_meta": {
+      "title": "⚙️ CR Prompt Text"
+    }
+  }
+}

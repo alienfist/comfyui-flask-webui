@@ -1,0 +1,59 @@
+/* change_face.css */
+.image-preview {
+    display: none;
+    height: 200px;
+    border: 2px solid #3f4044;
+    border-radius: 4px;
+    background-color: #1f1f1f;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.upload-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clear-img {
+    width: 18px;
+    height: 18px;
+    display: none;
+}
+
+.upload-img .select-button {
+    height: 40px;
+    background-color: #272729 !important;
+    border: none;
+    border-radius: 4px;
+    color: #a1a4a9 !important;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.upload-img .select-button:hover {
+    background-color: #33CCCC !important;
+    color: #2B2B2B !important;
+}
+
+.imagePlaceholder {
+    width: 90%;
+    height: 86%;
+    border: 2px dashed #3B3B3B;
+    border-radius: 2px;
+    margin: 20px auto;
+}
+
+.imagePlaceholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

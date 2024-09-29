@@ -1,0 +1,91 @@
+<!-- change_face.html -->
+{% extends "base.html" %}
+
+{% block title %}Change Face{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/change_face.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/change_face.js') }}"></script>
+{% endblock %}
+
+{% block float %}
+<!-- 遮罩层 -->
+<div id="loadingOverlay" class="load-overlay" style="display: none;">
+    <div id="loadingText" class="load-text"></div>
+    <progress id="progress-bar" class="uk-progress" value="0" max="100"></progress>
+    <button id="cancelButton" class="cancel-button" onclick="interruptTask()">
+        <div uk-icon="icon: close"></div><br>Cancel
+    </button>
+</div>
+
+<div id="zoomOverlay" class="zoom-overlay" style="display: none;">
+    <img src="">
+</div>
+{% endblock %}
+
+{% block work_area %}
+<div class="work-area">
+    <div class="work-center" id="placeholderContainer"></div>
+    <div class="work-sidebar">
+        <form>
+            <div uk-accordion="collapsible: true">
+                <div class="gen-btn-area">
+                    <button class="uk-button uk-button-primary uk-margin-top" type="button" id="generate" onclick="generateImage()">
+                        <img src="{{ url_for('static', filename='image/icon/leaf_white.png') }}">
+                        Generate
+                    </button>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="uk-accordion-content">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="sourceImageInput">Upload source image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="sourceImageInput" onchange="previewImage(this, 'Source')">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImageSource" uk-icon="icon: trash" type="button" onclick="clearImagePreview('Source')"></button>
+                            </div>
+                            <div id="imagePreviewContainerSource" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreviewSource" src="#" alt="preview face image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="targetImageInput">Upload target image:</label>
+                        <div class="uk-form-controls">
+                            <div class="upload-img">
+                                <div uk-form-custom>
+                                    <input class="uk-input" type="file" id="targetImageInput" onchange="previewImage(this, 'Target')">
+                                    <button class="select-button" type="button">Select Image</button>
+                                </div>
+                                <button class="clear-img" id="clearImageTarget" uk-icon="icon: trash" type="button" onclick="clearImagePreview('Target')"></button>
+                            </div>
+                            <div id="imagePreviewContainerTarget" class="uk-margin-small-top image-preview" style="display: none;">
+                                <img id="imagePreviewTarget" src="#" alt="preview face image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Image background:</label>
+                        <div class="uk-form-controls uk-form-controls-text my-radio">
+                            <label><input class="uk-radio" type="radio" value="true" name="removebg_radio"> Remove</label>
+                            <label><input class="uk-radio" type="radio" value="false" name="removebg_radio" checked> Keep</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
