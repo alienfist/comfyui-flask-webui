@@ -5,6 +5,8 @@
 # comfyui-flask-webui
 基于ComfyUI和Flask的AI图像生成网站
 
+## 由于comfyui进化太快，很多工作流已经无效，本项目无法正常运行，不再维护
+
 <p align="center">
     <img src="assets/screenshot-home.jpg" alt="首页">
 </p>
