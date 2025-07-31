@@ -1,6 +1,8 @@
 # comfyui-flask-webui
 An ai image generate website using flask base on comfyui
 
+## Due to the rapid evolution of comfyui, many workflows have become invalid. This project cannot run normally and is no longer maintained.
+
 <p align="center">
     <img src="assets/screenshot-home.jpg" alt="Home">
 </p>
